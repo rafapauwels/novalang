@@ -29,7 +29,7 @@ public class NovaSymbolMap {
     public void verificaIdsInutilizados() {
         for (String id : tabela.keySet()) {
             if (!idsUtilizados.contains(id))
-                throw new IdNaoUtilizadoException("A variável " + id + " foi declara mas não foi utilizada");
+                throw new IdNaoUtilizadoException("A variável " + id + " foi declarada mas não foi utilizada");
         }
     }
 
