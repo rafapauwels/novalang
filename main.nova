@@ -1,0 +1,25 @@
+programa
+    numero a;
+    numero b;
+    numero c;
+
+    b = 2 + 2.3;
+    c = 7.37;
+    escreva(a);
+    se (b < c) {
+        escreva(b);
+
+    } senao {
+        escreva(c);
+    }
+
+    escreva(b);
+
+    enquanto (a > c) {
+        escreva(c);
+        se (c > c) {
+            escreva(c);
+        }
+    }
+
+fimprog;

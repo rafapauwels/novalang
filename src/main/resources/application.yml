@@ -1,0 +1,16 @@
+micronaut:
+  router:
+    static-resources:
+      default:
+        paths: classpath:views
+        mapping: /**
+        enabled: true
+  application:
+    name: novaLinguagem
+  server:
+    cors:
+      enabled: true
+      configurations:
+        web:
+          allowedMethods:
+            - POST
