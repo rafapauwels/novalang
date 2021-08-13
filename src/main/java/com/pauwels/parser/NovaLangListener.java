@@ -1,6 +1,14 @@
 // Generated from NovaLang.g4 by ANTLR 4.9.2
 package com.pauwels.parser;
 
+import java.util.ArrayList;
+import java.util.Stack;
+import com.google.googlejavaformat.java.FormatterException;
+import com.pauwels.nova.program.NovaProgram;
+import com.pauwels.nova.exception.*;
+import com.pauwels.nova.commands.*;
+import com.pauwels.nova.data.*;
+
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**

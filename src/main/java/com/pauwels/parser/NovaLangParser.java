@@ -1,25 +1,22 @@
 // Generated from NovaLang.g4 by ANTLR 4.9.2
 package com.pauwels.parser;
 
-import com.google.googlejavaformat.java.FormatterException;
-import com.pauwels.nova.commands.*;
-import com.pauwels.nova.data.NovaSymbolMap;
-import com.pauwels.nova.data.NovaTypeEnum;
-import com.pauwels.nova.data.NovaVariable;
-import com.pauwels.nova.exception.NovaSemanticException;
-import com.pauwels.nova.program.NovaProgram;
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.ParserATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
-import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.tree.ParseTreeListener;
-import org.antlr.v4.runtime.tree.TerminalNode;
-
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
+import com.google.googlejavaformat.java.FormatterException;
+import com.pauwels.nova.program.NovaProgram;
+import com.pauwels.nova.exception.*;
+import com.pauwels.nova.commands.*;
+import com.pauwels.nova.data.*;
+
+import org.antlr.v4.runtime.atn.*;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.*;
+import org.antlr.v4.runtime.tree.*;
+import java.util.List;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class NovaLangParser extends Parser {
@@ -135,7 +132,9 @@ public class NovaLangParser extends Parser {
 	}
 
 	public String generate() throws FormatterException {
-	    return program.generate();
+	    String fonte = program.generate();
+	    symbolmap.verificaIdsInutilizados();
+	    return fonte;
 	}
 
 	public NovaLangParser(TokenStream input) {
@@ -551,6 +550,7 @@ public class NovaLangParser extends Parser {
 
 			        atualID = _input.LT(-1).getText();
 			        validaID(atualID);
+			        symbolmap.idUtilizado(atualID);
 			      
 			setState(75);
 			match(FP);
@@ -607,6 +607,7 @@ public class NovaLangParser extends Parser {
 
 			        atualID = _input.LT(-1).getText();
 			        validaID(atualID);
+			        symbolmap.idUtilizado(atualID);
 			      
 			setState(83);
 			match(FP);
@@ -660,6 +661,7 @@ public class NovaLangParser extends Parser {
 
 			        atualID = _input.LT(-1).getText();
 			        validaID(atualID);
+			        symbolmap.idUtilizado(atualID);
 			        tipoVar = symbolmap.recuperaSymbol(atualID).getTipo();
 			      
 			setState(89);
@@ -923,6 +925,7 @@ public class NovaLangParser extends Parser {
 
 			                atualID = _input.LT(-1).getText();
 			                validaID(atualID);
+			                symbolmap.idUtilizado(atualID);
 			                decisionExpr = atualID;
 			            
 			setState(139);

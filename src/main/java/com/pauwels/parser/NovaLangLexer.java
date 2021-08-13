@@ -1,21 +1,22 @@
 // Generated from NovaLang.g4 by ANTLR 4.9.2
 package com.pauwels.parser;
 
-import com.google.googlejavaformat.java.FormatterException;
-import com.pauwels.nova.commands.Command;
-import com.pauwels.nova.data.NovaSymbolMap;
-import com.pauwels.nova.data.NovaTypeEnum;
-import com.pauwels.nova.exception.NovaSemanticException;
-import com.pauwels.nova.program.NovaProgram;
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.atn.ATN;
-import org.antlr.v4.runtime.atn.ATNDeserializer;
-import org.antlr.v4.runtime.atn.LexerATNSimulator;
-import org.antlr.v4.runtime.atn.PredictionContextCache;
-import org.antlr.v4.runtime.dfa.DFA;
-
 import java.util.ArrayList;
 import java.util.Stack;
+import com.google.googlejavaformat.java.FormatterException;
+import com.pauwels.nova.program.NovaProgram;
+import com.pauwels.nova.exception.*;
+import com.pauwels.nova.commands.*;
+import com.pauwels.nova.data.*;
+
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenStream;
+import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.atn.*;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class NovaLangLexer extends Lexer {
@@ -122,7 +123,9 @@ public class NovaLangLexer extends Lexer {
 	}
 
 	public String generate() throws FormatterException {
-	    return program.generate();
+	    String fonte = program.generate();
+	    symbolmap.verificaIdsInutilizados();
+	    return fonte;
 	}
 
 

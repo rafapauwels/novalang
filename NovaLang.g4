@@ -38,7 +38,9 @@ private void validaID(String id) {
 }
 
 public String generate() throws FormatterException {
-    return program.generate();
+    String fonte = program.generate();
+    symbolmap.verificaIdsInutilizados();
+    return fonte;
 }
 }
 
@@ -65,6 +67,7 @@ cmdLeitura : 'leia' AP ID
       {
         atualID = _input.LT(-1).getText();
         validaID(atualID);
+        symbolmap.idUtilizado(atualID);
       } FP SC
       {
         NovaVariable var = symbolmap.recuperaSymbol(atualID);
@@ -75,6 +78,7 @@ cmdEscrita : 'escreva' AP ID
       {
         atualID = _input.LT(-1).getText();
         validaID(atualID);
+        symbolmap.idUtilizado(atualID);
       } FP SC
       {
         stack.peek().add(new CommandEscritaImpl(atualID));
@@ -84,6 +88,7 @@ cmdAttrib : ID
       {
         atualID = _input.LT(-1).getText();
         validaID(atualID);
+        symbolmap.idUtilizado(atualID);
         tipoVar = symbolmap.recuperaSymbol(atualID).getTipo();
       } ATTR { expr = ""; } expr SC
       {
@@ -125,6 +130,7 @@ comparacao : ID
             {
                 atualID = _input.LT(-1).getText();
                 validaID(atualID);
+                symbolmap.idUtilizado(atualID);
                 decisionExpr = atualID;
             }
              OPREL { decisionExpr += _input.LT(-1).getText(); }
